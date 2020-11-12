@@ -33,9 +33,34 @@ public class Problem3Test {
     }
 
     @Test
-    public void testInOrderTraverse() {
-        // homework
-        // to verify inOrderTraverse(TreeNode<Integer> node)
+    public void testInOrderTraverse()
+    {
+        //      4
+        //     / \
+        //    2   5
+        //   / \   \
+        //  1   3   6
+        TreeNode<Integer> root = new TreeNode<>(4);
+        root.left = new TreeNode<>(2);
+        root.left.left = new TreeNode<>(1);
+        root.left.right = new TreeNode<>(3);
+        root.right = new TreeNode<>(5);
+        root.right.right = new TreeNode<>(6);
+        assertEquals(Arrays.asList(1, 2, 3, 4, 5, 6), inOrderTraverse(root));
+
+        //     3
+        //    /  \
+        //   1     5
+        //    \   / \
+        //     2 4   6
+        root = new TreeNode<>(3);
+        root.left = new TreeNode<>(1);
+        root.left.right = new TreeNode<>(2);
+        root.right = new TreeNode<>(5);
+        root.right.left = new TreeNode<>(4);
+        root.right.right = new TreeNode<>(6);
+
+        assertEquals(Arrays.asList(1, 2, 3, 4, 5, 6), inOrderTraverse(root));
     }
 
     private static List<Integer> inOrderTraverse(TreeNode<Integer> node) {
@@ -146,9 +171,9 @@ public class Problem3Test {
         //    N   N
         // homework
         // what problem can you see for insertInBst from this test case?
-        // answer:
+        // answer: Every positive node is going to be higher, making it mostly a linked list
         // discuss how you would solve it in a comment below
-        // answer:
+        // answer: Every so often, it would need to be rebalanced so that it becomes a normal looking BST again
         root = new TreeNode<>(1);
         testCases.add(new BSTTestCase<>(root, 2, Arrays.asList(1, 2)));
         testCases.add(new BSTTestCase<>(root, 3, Arrays.asList(1, 2, 3)));
